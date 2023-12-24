@@ -65,12 +65,14 @@ async function main() {
     await new Promise(resolve => setTimeout(resolve, 500));
     var runCount = 0;
     while(true) {
+        runCount = runCount + 1;
+        console.log(runCount);
         if(active) {
-            runCount = runCount + 1;
-            console.log(runCount);
-            await new Promise(resolve => setTimeout(resolve, 86400000));
+            await new Promise(resolve => setTimeout(resolve, 86000000));
             await fetchAllChannels();
         }
+        await new Promise(resolve => setTimeout(resolve, 400000));
+        console.log("reloading...")
     }
 }
 main();
@@ -87,7 +89,14 @@ client.on("interactionCreate", (i) => {
      if(i.commandName == "refresh") {
         fetchAllChannels()
      }
+    
+     if(i.commandName == "on") {
+        active = true
+     }
 
+     if(i.commandName == "off") {
+        active = false
+     }
 
         
 })
