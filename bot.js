@@ -88,15 +88,20 @@ client.on("interactionCreate", (i) => {
 
      if(i.commandName == "refresh") {
         fetchAllChannels()
+        i.send("reloaded!")
      }
     
      if(i.commandName == "on") {
         active = true
+        i.send("auto refresh is now on!")
      }
 
      if(i.commandName == "off") {
         active = false
+        i.send("auto refresh is now off!")
      }
-
-        
+     if(i.commandName == "status") {
+        if(active) i.send("auto refresh is on");
+        else i.send("auto refresh is off");
+     }
 })

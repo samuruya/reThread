@@ -16,11 +16,15 @@ const commands = [
     },
     {
         name: "on",
-        description: "auto active on"
+        description: "auto refresh on"
     },
     {
         name: "off",
-        description: "auto active off"
+        description: "auto refresh off"
+    },
+    {
+      name: "status",
+      description: "check auto refresh status"
     },
 ];
 
