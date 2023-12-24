@@ -1,3 +1,6 @@
+
+/*reThread by dnji. Made using discord.js*/
+
 require("dotenv").config();
 
 const { Client, IntentsBitField, ThreadChannel } = require('discord.js');
@@ -53,6 +56,7 @@ const fetchAllChannels = async () => {
                 .then(msg => {
                     setTimeout(() => msg.delete(), 10)
                 })
+                
             }
         }
     });
@@ -68,8 +72,9 @@ async function main() {
         runCount = runCount + 1;
         console.log(runCount);
         if(active) {
-            await new Promise(resolve => setTimeout(resolve, 86000000));
             await fetchAllChannels();
+            await new Promise(resolve => setTimeout(resolve, 86000000));
+            console.log("end of wait");
         }
         await new Promise(resolve => setTimeout(resolve, 400000));
         console.log("reloading...")
@@ -105,3 +110,4 @@ client.on("interactionCreate", (i) => {
         else i.send("auto refresh is off");
      }
 })
+
